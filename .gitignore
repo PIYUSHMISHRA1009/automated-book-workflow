@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.log
+*.sqlite3
+.venv/
+.env
+
+# OS
+.DS_Store
+
+# VSCode
+.vscode/
+
+# Output
+*.pdf
+*.mp3
+/static/
+chapters/
+feedback/feedback_log.json
