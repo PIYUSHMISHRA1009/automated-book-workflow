@@ -11,7 +11,6 @@ from ai.human_feedback import log_feedback
 from ai.embeddings import store_chapter_embedding
 from ai.voice import text_to_speech
 from utils.pdf_utils import generate_pdf
-
 from dotenv import load_dotenv
 from pathlib import Path
 import uuid
@@ -89,7 +88,11 @@ def process_chapter(request: ChapterRequest):
 
     # === 7. Generate PDF ===
     logger.info("📄 Generating PDF output...")
-    generate_pdf(content=final_text, output_path=str(pdf_path))
+    generate_pdf(
+        content=final_text,
+        title=f"Chapter {chapter_id}",
+        output_path=str(pdf_path)
+    )
 
     # === 8. Text to Speech ===
     logger.info("🔊 Generating audio narration...")
