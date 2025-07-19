@@ -1,75 +1,43 @@
-````markdown
-# 📘 Automated Book Workflow with Agentic AI Pipeline
+# 🤖 Automated Book Workflow
 
-This project builds an end-to-end AI-powered system to scrape book chapters (e.g. from Wikisource), rewrite them using LLMs, review, edit, and convert into downloadable **PDFs**, **audio**, and **embeddings** — with support for both **fully automated** and **human-in-the-loop** review modes.
+A multi-agent AI-powered pipeline that takes in a book chapter URL (like Wikisource), processes it through:
 
-## 🔧 Features
-
-- 🕸️ Web Scraping with Screenshot Capture
-- ✍️ LLM-based Rewriting (OpenAI or other)
-- 🧠 Reviewer Agent for Quality Check
-- 🪄 Final Editor Agent
-- 📊 Feedback Logging
-- 🧬 Vector Embedding Storage
+- ✅ Scraping
+- ✍️ Rewriting
+- 🔍 Reviewing
 - 📕 PDF Generation
-- 🔊 Text-to-Speech (MP3)
-- 🖥️ Streamlit Frontend with 2 Modes:
-  - 🔁 Fully Agentic (Auto)
-  - 👤 Human-in-the-loop (Manual Editing)
+- 🔊 Text-to-speech narration (MP3)
+- 👤 Optional human-in-the-loop editing
+
+## 🧠 Modes
+
+- 🔁 Fully Agentic Mode: All agents work automatically
+- 👤 Human-in-the-Loop Mode: You can review/edit rewritten content
 
 ## 🚀 How to Run
 
-### 1. Clone the repo
-```bash
-git clone https://github.com/PIYUSHMISHRA1009/automated-book-workflow.git
-cd automated-book-workflow
-````
+1. Clone this repo  
+   `git clone https://github.com/PIYUSHMISHRA1009/automated-book-workflow.git`
 
-### 2. Create & activate virtual environment
+2. Install dependencies  
+   `pip install -r requirements.txt`
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
+3. Start the FastAPI backend  
+   `uvicorn app.api:app --reload`
 
-### 3. Install dependencies
+4. In a separate terminal, launch Streamlit  
+   `streamlit run streamlit_app.py`
 
-```bash
-pip install -r requirements.txt
-```
+## 🧪 Example URLs
 
-### 4. Start the FastAPI backend
+- https://en.wikisource.org/wiki/Pride_and_Prejudice/Chapter_1
 
-```bash
-uvicorn api:app --reload
-```
+## 📂 Output
 
-### 5. In a separate terminal, start the Streamlit frontend
+- `*.txt` versions for each agent step
+- `*.pdf` for final output
+- `*.mp3` for narrated voiceover
 
-```bash
-streamlit run streamlit_app.py
-```
+---
 
-## 📂 Folder Structure
-
-```
-├── ai/
-│   ├── writer.py
-│   ├── reviewer.py
-│   ├── editor.py
-│   ├── embeddings.py
-│   ├── voice.py
-│   └── human_feedback.py
-├── scraping/
-│   └── scraper.py
-├── static/
-│   └── (PDFs, screenshots, MP3s)
-├── chapters/
-│   └── (Generated text files)
-├── utils/
-│   └── pdf_utils.py
-├── api.py
-├── streamlit_app.py
-├── requirements.txt
-└── README.md
-```
+Made with ❤️ using FastAPI, LangChain, gTTS, PyMuPDF, and Streamlit.
